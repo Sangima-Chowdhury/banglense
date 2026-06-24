@@ -77,3 +77,30 @@ Open `http://127.0.0.1:5000`
 ---
 
 ## Project structure
+
+banglense/
+
+├── app.py              # Flask routes + Claude vision call
+
+├── static/
+
+│   ├── style.css       # cream / forest green / watery red palette
+
+│   └── script.js       # Web Speech API (Listen in Bangla)
+
+├── templates/
+
+│   ├── index.html      # landing page
+
+│   └── result.html     # explanation output
+
+└── requirements.txt
+
+---
+
+Built in East London 🇧🇩
+
+
+<img width="1352" height="878" alt="Screenshot 2026-06-24 at 14 01 02" src="https://github.com/user-attachments/assets/08a5ef92-29af-44c2-a4e8-a9e3948b0485" />
+
+<img width="1352" height="878" alt="Screenshot 2026-06-24 at 15 01 18" src="https://github.com/user-attachments/assets/35841ea3-d106-46e9-9c4e-d0c1da0f9d2b" />
