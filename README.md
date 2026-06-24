@@ -14,7 +14,7 @@ NHS appointments, council tax bills, HMRC notices — my elderly Bangladeshi
 relatives receive them, can't fully understand them, and call me. Every time. 
 BangLense is my attempt to give them something they can use themselves.
 
-You photograph or upload the letter. BangLense reads it with AI vision, explains what 
+You photograph the letter. BangLense reads it with AI vision, explains what 
 it says in clear everyday Bangla, tells you what to do, and reads it aloud. 
 That last part matters — many elderly Sylheti speakers are more comfortable 
 listening than reading.
@@ -40,7 +40,8 @@ listening than reading.
 | AI vision | Anthropic Claude API (claude-sonnet-4-6) |
 | Image processing | Pillow (PIL) |
 | Text to speech | Web Speech API (browser-side, free) |
-| Deployment | Render |
+| Primary deployment | Render |
+| Cloud deployment | AWS EC2 (Ubuntu, Nginx, systemd) |
 | Database | None — no data is stored |
 
 **Why no database?** BangLense doesn't need persistence. A letter comes in, 
@@ -60,12 +61,23 @@ Everything around them is explained in plain Bangladeshi Bangla.
 
 ---
 
+## Deployment
+
+**Render** → [banglense.onrender.com](https://banglense.onrender.com) — primary live URL
+
+**AWS EC2** — provisioned an Ubuntu 24.04 server in eu-west-2 (London), 
+configured Nginx as a reverse proxy, deployed Flask via Gunicorn as a 
+persistent systemd service. Managed SSH access, security groups, and 
+inbound rules via the AWS console.
+
+---
+
 ## Run it locally
 
 ```bash
 git clone https://github.com/Sangima-Chowdhury/banglense.git
 cd banglense
-python -m venv .venv
+python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 cp .env.example .env   # add your ANTHROPIC_API_KEY
@@ -99,7 +111,6 @@ banglense/
 ---
 
 Built in East London 🇧🇩
-
 
 <img width="1352" height="878" alt="Screenshot 2026-06-24 at 14 01 02" src="https://github.com/user-attachments/assets/08a5ef92-29af-44c2-a4e8-a9e3948b0485" />
 
