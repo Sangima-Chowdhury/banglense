@@ -1,0 +1,411 @@
+/* ===========================================================================
+   BangLense — design tokens (the locked palette)
+   =========================================================================== */
+:root {
+    --cream: #f6f3ec;
+    --cream-band: #f1ede4;
+    --green: #3f6b58;
+    --green-dark: #355c4b;
+    --red: #c98379;
+    --red-text: #a85f54;
+    --red-wash: #f4e4e1;
+    --red-wash-2: #f6ece9;
+    --ink: #1d2019;
+    --ink-soft: #23251f;
+    --muted: #5c5f54;
+    --muted-2: #6f7268;
+    --faint: #8a8d80;
+    --border: #e2ddd1;
+    --border-soft: #e4e0d5;
+    --white: #ffffff;
+    --radius: 14px;
+    --radius-sm: 10px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui,
+        "Noto Sans Bengali", "SolaimanLipi", sans-serif;
+    background: var(--cream);
+    color: var(--ink-soft);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+}
+
+.page {
+    max-width: 920px;
+    margin: 0 auto;
+}
+
+
+/* ---- nav ------------------------------------------------------------------ */
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 26px;
+    border-bottom: 1px solid var(--border-soft);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
+
+.brand-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ink-soft);
+}
+
+.nav-links {
+    color: var(--muted-2);
+    font-size: 14px;
+}
+
+.nav-links a {
+    color: var(--muted-2);
+    text-decoration: none;
+}
+
+.nav-links a:hover {
+    color: var(--green);
+}
+
+.logo-tile {
+    width: 36px;
+    height: 36px;
+    background: #efeadf;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* ---- hero ----------------------------------------------------------------- */
+.hero {
+    display: flex;
+    gap: 36px;
+    align-items: center;
+    padding: 48px 26px;
+}
+
+.hero-left {
+    flex: 1;
+    min-width: 0;
+}
+
+.badge {
+    display: inline-block;
+    background: var(--red-wash);
+    color: var(--red-text);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 13px;
+    border-radius: var(--radius-sm);
+    margin-bottom: 18px;
+}
+
+.headline {
+    font-size: 38px;
+    font-weight: 600;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 16px;
+}
+
+.subhead {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 420px;
+    margin-bottom: 30px;
+}
+
+
+/* ---- big scan button ------------------------------------------------------ */
+.scan-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: var(--green);
+    color: #eef3ef;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 20px;
+    border-radius: var(--radius);
+    cursor: pointer;
+    border: none;
+    width: 100%;
+    transition: background 0.15s ease;
+}
+
+.scan-button:hover {
+    background: var(--green-dark);
+}
+
+.scan-hint {
+    text-align: center;
+    color: #7c8076;
+    font-size: 13px;
+    margin-top: 11px;
+}
+
+.hidden-input {
+    display: none;
+}
+
+
+/* ---- result / preview card ------------------------------------------------ */
+.card {
+    width: 240px;
+    flex-shrink: 0;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px;
+}
+
+.file-chip {
+    background: var(--red-wash-2);
+    border-radius: var(--radius-sm);
+    padding: 11px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: #4a4d43;
+    font-size: 13px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.section-label {
+    color: var(--faint);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    margin-bottom: 7px;
+}
+
+.section-text {
+    color: var(--ink-soft);
+    font-size: 15px;
+    line-height: 1.65;
+    margin-bottom: 18px;
+}
+
+.section-text .term {
+    color: var(--red-text);
+    font-weight: 600;
+}
+
+.section-text .term-green {
+    color: var(--green);
+    font-weight: 600;
+}
+
+.listen-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    background: var(--green);
+    color: #eef3ef;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 13px;
+    border-radius: var(--radius-sm);
+    border: none;
+    width: 100%;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.listen-button:hover {
+    background: var(--green-dark);
+}
+
+
+/* ---- how it works --------------------------------------------------------- */
+.how {
+    background: var(--cream-band);
+    padding: 34px 26px;
+    border-top: 1px solid var(--border-soft);
+}
+
+.how-title {
+    text-align: center;
+    color: var(--faint);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin-bottom: 26px;
+}
+
+.steps {
+    display: flex;
+    gap: 20px;
+}
+
+.step {
+    flex: 1;
+    text-align: center;
+}
+
+.step-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 13px;
+    color: var(--green);
+}
+
+.step h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    margin-bottom: 5px;
+}
+
+.step p {
+    font-size: 13px;
+    color: var(--muted-2);
+}
+
+
+/* ---- footer --------------------------------------------------------------- */
+.footer {
+    padding: 18px 26px;
+    border-top: 1px solid var(--border-soft);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--muted-2);
+    font-size: 13px;
+}
+
+.footer-links {
+    color: var(--faint);
+    font-size: 13px;
+}
+
+
+/* ---- error + loading ------------------------------------------------------ */
+.error {
+    background: var(--red-wash);
+    color: var(--red-text);
+    padding: 13px 16px;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.loading {
+    display: none;
+    text-align: center;
+    color: var(--muted);
+    font-size: 15px;
+    padding: 14px;
+}
+
+.loading.show {
+    display: block;
+}
+
+
+/* ---- result page ---------------------------------------------------------- */
+.result-wrap {
+    padding: 40px 26px;
+    max-width: 560px;
+    margin: 0 auto;
+}
+
+.result-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 26px;
+}
+
+.result-card .section-text {
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--green);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 22px;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+
+/* ---- responsive ----------------------------------------------------------- */
+@media (max-width: 640px) {
+    .hero {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 28px;
+        padding: 32px 20px;
+    }
+
+    .card {
+        width: 100%;
+    }
+
+    .headline {
+        font-size: 32px;
+    }
+
+    .steps {
+        flex-direction: column;
+        gap: 22px;
+    }
+
+    .nav-links {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
+}
+
+.scan-button:focus-visible,
+.listen-button:focus-visible,
+.back-link:focus-visible {
+    outline: 3px solid var(--green);
+    outline-offset: 2px;
+}

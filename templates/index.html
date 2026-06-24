@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BangLense — every letter, finally clear</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="page">
+
+    <nav class="nav">
+      <div class="brand">
+        <div class="logo-tile">
+          <svg width="22" height="22" viewBox="0 0 58 58">
+            <circle cx="29" cy="29" r="27" fill="none" stroke="#3f6b58" stroke-width="3.5"/>
+            <circle cx="29" cy="29" r="12" fill="#c98379"/>
+          </svg>
+        </div>
+        <span class="brand-name">BangLense</span>
+      </div>
+      <div class="nav-links">
+        <a href="#how">how it works</a> &nbsp;·&nbsp; <a href="#about">about</a>
+      </div>
+    </nav>
+
+    {% if error %}
+      <div style="padding:20px 26px 0;">
+        <div class="error">{{ error }}</div>
+      </div>
+    {% endif %}
+
+    <section class="hero">
+      <div class="hero-left">
+        <span class="badge">AI-powered · reads any letter</span>
+        <h1 class="headline">Every letter,<br>finally clear.</h1>
+        <p class="subhead">NHS, council, HMRC — take a photo, and BangLense
+          explains what it says, and what to do, in plain Bangla.</p>
+
+        <form action="{{ url_for('scan') }}" method="post"
+              enctype="multipart/form-data" id="scan-form">
+          <label class="scan-button" for="letter-input">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2">
+              <path d="M3 7h4l2-2h6l2 2h4v12H3z"/>
+              <circle cx="12" cy="13" r="3.5"/>
+            </svg>
+            Scan a letter
+          </label>
+          <input class="hidden-input" type="file" id="letter-input"
+                 name="letter" accept="image/*" capture="environment">
+        </form>
+
+        <p class="scan-hint">Free · no sign-up · just point your camera</p>
+        <div class="loading" id="loading">Reading the letter…</div>
+      </div>
+
+      <div class="card">
+        <div class="file-chip">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+               stroke="#c98379" stroke-width="2">
+            <path d="M14 3H6v18h12V8z"/><path d="M14 3v5h5"/>
+          </svg>
+          Council_Tax_2026.jpg
+        </div>
+        <div class="section-label">EXPLANATION</div>
+        <p class="section-text">এই চিঠিটি আপনার
+          <span class="term">Council Tax</span> নিয়ে।
+          প্রতি মাসে £142 দিতে হবে।</p>
+        <div class="section-label">WHAT TO DO</div>
+        <p class="section-text">৩১শে জুলাইয়ের মধ্যে
+          <span class="term-green">online</span> পরিশোধ করুন।</p>
+        <button class="listen-button" type="button"
+                disabled style="opacity:0.7;cursor:default;">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2">
+            <path d="M11 5 6 9H2v6h4l5 4z"/>
+            <path d="M15.5 8.5a5 5 0 0 1 0 7"/>
+          </svg>
+          Listen in Bangla
+        </button>
+      </div>
+    </section>
+
+    <section class="how" id="how">
+      <div class="how-title">HOW IT WORKS</div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2">
+              <path d="M3 7h4l2-2h6l2 2h4v12H3z"/>
+              <circle cx="12" cy="13" r="3.5"/>
+            </svg>
+          </div>
+          <h3>1. Snap it</h3>
+          <p>Photograph the letter, however crumpled.</p>
+        </div>
+        <div class="step">
+          <div class="step-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2">
+              <path d="M5 8h8M9 4v4M7 8c0 4-2 7-4 8m2-4c0 2 2 4 4 4"/>
+              <path d="M13 20l4-9 4 9M14.5 17h5"/>
+            </svg>
+          </div>
+          <h3>2. Understand it</h3>
+          <p>Plain Bangla explanation, terms kept clear.</p>
+        </div>
+        <div class="step">
+          <div class="step-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2">
+              <path d="M4 5h11M4 12h11M4 19h7"/>
+              <path d="M16 16l2.5 2.5L23 14"/>
+            </svg>
+          </div>
+          <h3>3. Know what to do</h3>
+          <p>The next step, spelled out. Or hear it aloud.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer" id="about">
+      <div class="footer-brand">
+        <svg width="18" height="18" viewBox="0 0 58 58">
+          <circle cx="29" cy="29" r="27" fill="none" stroke="#3f6b58" stroke-width="4"/>
+          <circle cx="29" cy="29" r="13" fill="#c98379"/>
+        </svg>
+        BangLense · made in East London
+      </div>
+      <div class="footer-links">privacy · contact</div>
+    </footer>
+
+  </div>
+
+  <script>
+    const input = document.getElementById('letter-input');
+    const form = document.getElementById('scan-form');
+    const loading = document.getElementById('loading');
+    input.addEventListener('change', function () {
+      if (input.files.length > 0) {
+        loading.classList.add('show');
+        form.submit();
+      }
+    });
+  </script>
+</body>
+</html>
